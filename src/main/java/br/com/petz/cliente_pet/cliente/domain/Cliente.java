@@ -4,10 +4,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -21,6 +21,8 @@ import java.util.UUID;
 //dados e comportamentos no mesmo lugar
 public class Cliente {
        @Id
+       @GeneratedValue(strategy = GenerationType.AUTO)
+       @Column(name= "id", updatable = false, unique = true, nullable = false)
        private UUID idCliente;
        @NotBlank
        private String nomeCompleto;
@@ -46,7 +48,6 @@ public class Cliente {
        private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(String nomeCompleto, String email, String celular, String telefone, Sexo sexo, LocalDate dataNascimento, String cpf, Boolean aceitaTermos) {
-        this.idCliente = UUID.randomUUID();
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.celular = celular;
