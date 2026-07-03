@@ -3,8 +3,6 @@ package br.com.petz.cliente_pet.cliente.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
