@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Log4j2
-@RequiredArgsConstructor()
+@RequiredArgsConstructor
 public class ClienteController implements ClienteAPI{
     private final ClienteService clienteService;
 
