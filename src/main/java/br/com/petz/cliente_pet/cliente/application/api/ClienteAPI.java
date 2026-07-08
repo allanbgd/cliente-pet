@@ -1,10 +1,12 @@
 package br.com.petz.cliente_pet.cliente.application.api;
 
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -17,5 +19,9 @@ public interface ClienteAPI {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<ClienteListResponse> getTodosCliente();
+
+    @GetMapping(value = "/{idCliente}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ClienteDetalhadoResponse getClienteAtravesId(@PathVariable UUID idCliente);
 
 }

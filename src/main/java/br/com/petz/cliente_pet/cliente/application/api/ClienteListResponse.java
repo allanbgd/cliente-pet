@@ -3,7 +3,6 @@ package br.com.petz.cliente_pet.cliente.application.api;
 import br.com.petz.cliente_pet.cliente.domain.Cliente;
 import lombok.Value;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
