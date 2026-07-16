@@ -5,9 +5,12 @@ import br.com.petz.cliente_pet.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.catalina.Store;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -29,5 +32,16 @@ public class ClienteInfraRepository implements ClienteRepository {
         List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
         log.info("[finaliza] ClienteIfraRepository - buscaTodosClientes");
         return todosClientes;
+    }
+
+    @Override
+    public Cliente buscaClienteAtravesId(UUID idCliente) {
+
+        log.info("[inicia] ClienteIfraRepository - buscaClienteAtravesId");
+        Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+                        .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
+        log.info("[finaliza] ClienteIfraRepository - buscaClienteAtravesId");
+        return cliente;
+
     }
 }
