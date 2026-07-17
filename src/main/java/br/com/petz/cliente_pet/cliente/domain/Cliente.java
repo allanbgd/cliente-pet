@@ -4,6 +4,7 @@ import br.com.petz.cliente_pet.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Cliente {
 
        @Email
        @NotBlank
+       @Column(unique = true)
        private String email;
 
        @NotBlank
@@ -38,6 +40,7 @@ public class Cliente {
        private LocalDate dataNascimento;
 
        @CPF
+       @Column(unique = true)
        private String cpf;
 
        @NotNull
