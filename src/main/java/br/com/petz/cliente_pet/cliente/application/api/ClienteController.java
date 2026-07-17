@@ -1,6 +1,7 @@
 package br.com.petz.cliente_pet.cliente.application.api;
 
 import br.com.petz.cliente_pet.cliente.application.service.ClienteService;
+import br.com.petz.cliente_pet.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,7 @@ public class ClienteController implements ClienteAPI{
     public void PatchAlteraCliente(UUID idCliente, @Valid ClienteAlteracaoRequest clienteAlteracaoRequest) {
         log.info("[inicia] ClienteController - PatchAlteraCliente");
         log.info("[idCliente] {}", idCliente);
+        clienteService.patchAlteraCliente(idCliente,clienteAlteracaoRequest);
         log.info("[finaliza] ClienteController - PatchAlteraCliente");
 
     }
