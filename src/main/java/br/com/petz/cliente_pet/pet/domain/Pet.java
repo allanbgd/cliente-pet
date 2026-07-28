@@ -3,12 +3,14 @@ package br.com.petz.cliente_pet.pet.domain;
 import br.com.petz.cliente_pet.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.petz.cliente_pet.cliente.application.api.ClienteRequest;
 import br.com.petz.cliente_pet.cliente.domain.Sexo;
+import br.com.petz.cliente_pet.pet.domain.application.api.PetRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -25,6 +27,10 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid",name = "idPet", updatable = false, unique = true, nullable = false)
     private UUID idPet;
+    //referencia ao id do cliente
+    @NotNull
+    @Column(columnDefinition = "uuid",name = "idClienteTutor", updatable = false, unique = true, nullable = false)
+    private UUID idClienteTutor;
     @NotBlank
     private String nomePet;
 
@@ -51,5 +57,22 @@ public class Pet {
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
+    public Pet(UUID idPet, UUID idClienteTutor, String nomePet, Porte porte, TipoPet tipo, String microchip, String raca, SexoPet sexo, String pelagemCor, LocalDate dataNascimento, String rga, Integer peso, LocalDateTime dataHoraDoCadastro, LocalDateTime dataHoraDaUltimaAlteracao) {
+    }
 
+    public Pet(UUID idCliente, @Valid PetRequest petRequest) {
+
+        this.idClienteTutor = idCliente;
+        this.nomePet = petRequest.getNomePet();
+        this.porte = petRequest.getPorte();
+        this.tipo = petRequest.getTipo();
+        this.microchip = petRequest.getMicrochip();
+        this.raca = petRequest.getRaca();
+        this.sexo = petRequest.getSexo();
+        this.pelagemCor = petRequest.getPelagemCor();
+        this.dataNascimento = petRequest.getDataNascimento();
+        this.rga = petRequest.getRga();
+        this.peso = petRequest.getPeso();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+    }
 }
