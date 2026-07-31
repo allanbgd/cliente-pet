@@ -1,4 +1,4 @@
-package br.com.petz.cliente_pet.pet.domain.application.api;
+package br.com.petz.cliente_pet.pet.application.api;
 
 import lombok.Value;
 

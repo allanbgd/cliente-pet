@@ -1,17 +1,12 @@
 package br.com.petz.cliente_pet.pet.domain;
 
-import br.com.petz.cliente_pet.cliente.application.api.ClienteAlteracaoRequest;
-import br.com.petz.cliente_pet.cliente.application.api.ClienteRequest;
-import br.com.petz.cliente_pet.cliente.domain.Sexo;
-import br.com.petz.cliente_pet.pet.domain.application.api.PetRequest;
+import br.com.petz.cliente_pet.pet.application.api.PetRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -56,9 +51,6 @@ public class Pet {
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
-
-    public Pet(UUID idPet, UUID idClienteTutor, String nomePet, Porte porte, TipoPet tipo, String microchip, String raca, SexoPet sexo, String pelagemCor, LocalDate dataNascimento, String rga, Integer peso, LocalDateTime dataHoraDoCadastro, LocalDateTime dataHoraDaUltimaAlteracao) {
-    }
 
     public Pet(UUID idCliente, @Valid PetRequest petRequest) {
 

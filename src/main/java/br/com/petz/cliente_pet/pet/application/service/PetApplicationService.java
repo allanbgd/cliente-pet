@@ -1,9 +1,10 @@
-package br.com.petz.cliente_pet.pet.domain.application.service;
+package br.com.petz.cliente_pet.pet.application.service;
 
 import br.com.petz.cliente_pet.cliente.application.service.ClienteService;
+import br.com.petz.cliente_pet.pet.application.api.PetRequest;
+import br.com.petz.cliente_pet.pet.application.api.PetResponse;
+import br.com.petz.cliente_pet.pet.application.repository.PetRepository;
 import br.com.petz.cliente_pet.pet.domain.Pet;
-import br.com.petz.cliente_pet.pet.domain.application.api.PetRequest;
-import br.com.petz.cliente_pet.pet.domain.application.api.PetResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class PetApplicationService implements PetService {
     public PetResponse criaPet(UUID idCliente, PetRequest petRequest) {
         log.info("[inicia] petApplicationService - criaPet");
         clienteService.buscaClienteAtravesId(idCliente);
-       Pet pet = petRepository.salvaPet(new Pet(idCliente, petRequest));
+        Pet pet = petRepository.salvaPet(new Pet(idCliente, petRequest));
         log.info("[finaliza] petApplicationService - criaPet");
         return new PetResponse(pet.getIdPet());
     }

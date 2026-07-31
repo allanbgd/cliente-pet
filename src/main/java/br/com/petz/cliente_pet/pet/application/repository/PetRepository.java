@@ -1,4 +1,4 @@
-package br.com.petz.cliente_pet.pet.domain.application.service;
+package br.com.petz.cliente_pet.pet.application.repository;
 
 import br.com.petz.cliente_pet.pet.domain.Pet;
 

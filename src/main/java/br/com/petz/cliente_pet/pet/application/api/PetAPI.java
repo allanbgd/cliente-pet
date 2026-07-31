@@ -1,9 +1,11 @@
-package br.com.petz.cliente_pet.pet.domain.application.api;
+package br.com.petz.cliente_pet.pet.application.api;
 
+import br.com.petz.cliente_pet.cliente.application.api.ClienteListResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 @RestController
 @RequestMapping("/v1/cliente/{idCliente}/pet")
@@ -15,6 +17,9 @@ public interface PetAPI {
                             @Valid @RequestBody PetRequest petRequest);
 
 
+        @GetMapping
+        @ResponseStatus(code = HttpStatus.OK)
+        List<PetClienteListResponse> getPetsDoClienteComId(@PathVariable UUID idCliente);
 
 
 }

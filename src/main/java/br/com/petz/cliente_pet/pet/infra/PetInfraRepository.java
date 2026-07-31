@@ -1,7 +1,7 @@
-package br.com.petz.cliente_pet.pet.domain.infra;
+package br.com.petz.cliente_pet.pet.infra;
 
 import br.com.petz.cliente_pet.pet.domain.Pet;
-import br.com.petz.cliente_pet.pet.domain.application.service.PetRepository;
+import br.com.petz.cliente_pet.pet.application.repository.PetRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
