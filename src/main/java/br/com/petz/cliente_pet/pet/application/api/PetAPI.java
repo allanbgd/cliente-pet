@@ -1,7 +1,5 @@
 package br.com.petz.cliente_pet.pet.application.api;
 
-import br.com.petz.cliente_pet.cliente.application.api.ClienteDetalhadoResponse;
-import br.com.petz.cliente_pet.cliente.application.api.ClienteListResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +23,10 @@ public interface PetAPI {
         @GetMapping(value = "/{idPet}")
         @ResponseStatus(code = HttpStatus.OK)
         PetDetalhadoResponse getPetDoClienteAtravesId(@PathVariable UUID idCliente, @PathVariable UUID idPet);
+
+        @DeleteMapping(value = "/{idPet}")
+        @ResponseStatus(code = HttpStatus.NO_CONTENT)
+        void deletePetDoClienteAtravesId(@PathVariable UUID idCliente, @PathVariable UUID idPet);
 
 
 

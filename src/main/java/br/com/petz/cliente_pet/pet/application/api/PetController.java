@@ -37,12 +37,19 @@ public class PetController implements PetAPI {
     @Override
     public PetDetalhadoResponse getPetDoClienteAtravesId(UUID idCliente, UUID idPet) {
         log.info("[inicia] petController - getPetDoClienteAtravesId");
-        log.info("[idCliente] {}", idCliente);
         log.info("[idCliente] {} - [idPet] {}", idCliente, idPet);
         PetDetalhadoResponse pet = petService.buscaPetDoClienteComId(idCliente,idPet);
         log.info("[finaliza] petController - getPetDoClienteAtravesId");
 
 
         return pet;
+    }
+
+    @Override
+    public void deletePetDoClienteAtravesId(UUID idCliente, UUID idPet) {
+        log.info("[inicia] petController - getPetDoClienteAtravesId");
+        log.info("[idCliente] {} - [idPet] {}", idCliente, idPet);
+        petService.deletaPetDoClienteComId(idCliente,idPet);
+        log.info("[finaliza] petController - getPetDoClienteAtravesId");
     }
 }

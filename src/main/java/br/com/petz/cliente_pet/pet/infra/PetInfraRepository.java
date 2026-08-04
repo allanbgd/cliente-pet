@@ -39,7 +39,7 @@ public class PetInfraRepository implements PetRepository {
         var pet = petSpringDataJPARepository.findById(idPet)
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Pet não encontrado para o idPet = " + idPet));
         log.info("[finaliza] PetInfraRepository - salvaPet");
-        return null;
+        return pet;
     }
 
 

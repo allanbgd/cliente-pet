@@ -39,7 +39,4 @@ public class PetDetalhadoResponse {
 
     }
 
-    public PetDetalhadoResponse(UUID idPet, UUID idClienteTutor, String nomePet, Porte porte, TipoPet tipo, String microchip, String raca, SexoPet sexo, String pelagemCor, LocalDate dataNascimento, String rga, Integer peso) {
-
-    }
 }
