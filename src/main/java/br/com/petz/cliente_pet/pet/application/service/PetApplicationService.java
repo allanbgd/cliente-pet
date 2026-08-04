@@ -53,6 +53,9 @@ public class PetApplicationService implements PetService {
     @Override
     public void deletaPetDoClienteComId(UUID idCliente, UUID idPet) {
         log.info("[inicia] petApplicationService - deletaPetDoClienteComId");
+        clienteService.buscaClienteAtravesId(idCliente);
+        Pet pet = petRepository.buscaPetPeloId(idPet);
+        petRepository.deletaPet(pet);
         log.info("[finaliza] petApplicationService - deletaPetDoClienteComId");
 
     }
